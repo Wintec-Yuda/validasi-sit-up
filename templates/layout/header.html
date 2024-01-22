@@ -11,10 +11,13 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand bg-info">
-        <div class="container-fluid shadow-sm">
+    <nav class="navbar navbar-expand bg-primary">
+        <div class="shadow-sm">
             <nav class="navbar-collapse">
-                <a class="navbar-brand text-white" href="#">LOGO</a>
+                <a class="navbar-brand ms-2" href="/">
+                    <img src="{{ url_for('static', filename='images/logo unp.png') }}" alt="Logo" width="40"
+                        height="40">
+                </a>
                 <div class="navbar-nav ms-4">
                     <a class="nav-link me-3 text-white" href="/">Home</a>
                     <a class="nav-link me-3 text-white" href="/latihan">Latihan Sit-Up</a>

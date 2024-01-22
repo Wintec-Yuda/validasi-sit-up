@@ -20,12 +20,30 @@
                     </div>
                 </div>
             </form>
-            <hr class="my-3">
+            <hr class="border-primary border-top border-2">
             <div class="d-grid">
                 <h5 class="text-primary mb-2">Latihan Sit up Realtime</h5>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mulaiModal">Mulai
-                    Latihan Realtime</button>
+                <form id="realtime">
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="namaRealtime" placeholder="Masukkan Nama"
+                            name="nama" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="waktu" class="form-label">Waktu</label>
+                        <input type="number" class="form-control" id="waktu" name="waktu" placeholder="Detik" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="button" id="realtimeButton" class="btn btn-primary">Upload</button>
+                    </div>
+                </form>
             </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-6 mt-2 mt-md-none">
+            <iframe name="iframe_a" id="iframe_a" title="Iframe"></iframe>
+            <p class="text-center"><a id="iframeVideo" class="d-none btn btn-primary p-2" target="iframe_a">Mulai
+                    Sekarang</a></p>
         </div>
     </div>
 </main>

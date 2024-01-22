@@ -19,7 +19,8 @@ $(document).ready(function () {
                 // Tanggapan dari API
                 if (data) {
                     // Menampilkan modal
-                    $("#VideoModal").modal("show");
+                    // $("#VideoModal").modal("show");
+                    $("#iframeVideo").removeClass("d-none").addClass("d-block");
 
                     // Mengisi konten modal dengan data dari respons server
                     $("#iframeVideo").attr("href", `http://127.0.0.1:5000/video_feed_upload?file_path=${data.file_path}&nama=${data.nama}`);
@@ -44,7 +45,9 @@ $(document).ready(function () {
 
         if (data) {
             // Menampilkan modal
-            $("#VideoModal").modal("show");
+            // $("#VideoModal").modal("show");
+
+            $("#iframeVideo").removeClass("d-none").addClass("d-block");
 
             // Mengisi konten modal dengan data dari respons server
             $("#iframeVideo").attr("href", `http://127.0.0.1:5000/video_feed_realtime?nama=${data.nama}&waktu=${data.waktu}`);

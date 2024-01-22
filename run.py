@@ -144,7 +144,6 @@ def upload_file():
     file_path = "temp_video.mp4"
     file.save(file_path)
 
-    # return redirect(url_for('video_feed_upload', file_path=file_path, nama=nama))
     return {'file_path': file_path, 'nama': nama}
 
 @app.route('/video_feed_upload')
