@@ -19,7 +19,6 @@ def gen(file_path, realtime=False, upload=False, nama=None, waktu=None):
         file_path = int(file_path)
 
     cap = cv2.VideoCapture(file_path)
-
     situp_count = 0
     start_situp = False
     end_situp = False
@@ -88,9 +87,13 @@ def gen(file_path, realtime=False, upload=False, nama=None, waktu=None):
 
         elapsed_time = time.time() - start_time
         # menghitung mundur waktu
-        if realtime or upload:
+        # if realtime or upload:
+        if realtime:
             remaining_time = max(0, waktu - elapsed_time)
             draw_remaining_time(img, remaining_time)
+
+            if remaining_time <= 0:
+                break
 
         # cetak jumlah sit up
         draw_count_sit_up(img, situp_count)
