@@ -1,12 +1,10 @@
 from flask import Flask, redirect, url_for, render_template, Response, request
 from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS
 import time
 import mediapipe as mp
 from functions import *
 
 app = Flask(__name__)
-# CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/sit_up'
 db = SQLAlchemy(app)
 
@@ -22,7 +20,6 @@ def gen(file_path, realtime=False, upload=False, nama=None, waktu=None):
 
     cap = cv2.VideoCapture(file_path)
 
-    pTime = 0
     situp_count = 0
     start_situp = False
     end_situp = False
@@ -95,14 +92,6 @@ def gen(file_path, realtime=False, upload=False, nama=None, waktu=None):
             remaining_time = max(0, waktu - elapsed_time)
             draw_remaining_time(img, remaining_time)
 
-            if remaining_time <= 0:
-                # Save data to the User table
-                with app.app_context():
-                    user = User(nama=nama, waktu=waktu, jumlah=situp_count)
-                    db.session.add(user)
-                    db.session.commit()
-                break
-
         # cetak jumlah sit up
         draw_count_sit_up(img, situp_count)
 
@@ -111,6 +100,11 @@ def gen(file_path, realtime=False, upload=False, nama=None, waktu=None):
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
+    with app.app_context():
+        user = User(nama=nama, waktu=waktu, jumlah=situp_count//2)
+        db.session.add(user)
+        db.session.commit()
+        
 @app.route('/')
 def index():
     return render_template('index.html')
