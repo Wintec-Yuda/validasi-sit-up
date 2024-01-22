@@ -1,0 +1,44 @@
+<!-- Modal latihan sit up realtime-->
+<div class="modal fade" id="mulaiModal" tabindex="-1" aria-labelledby="mulaiModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mulaiModalLabel">Isi Data Dulu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="realtime">
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="namaRealtime" name="nama" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="waktu" class="form-label">Waktu</label>
+                        <input type="number" class="form-control" id="waktu" name="waktu" placeholder="Detik" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="button" id="realtimeButton" class="btn btn-primary">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal untuk preview video yang di-upload -->
+<div class="modal fade" id="VideoModal" tabindex="-1" aria-labelledby="VideoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="VideoModalLabel">Detail Video</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- iframe to display the video -->
+                <iframe name="iframe_a" id="iframe_a" height="100%" width="100%" title="Iframe"></iframe>
+                <p class="d-flex justify-content-center"><a id="iframeVideo" class="btn btn-primary p-2"
+                        target="iframe_a">Mulai Sekarang</a></p>
+            </div>
+        </div>
+    </div>
+</div>

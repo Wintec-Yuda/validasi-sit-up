@@ -1,0 +1,26 @@
+{% include 'layout/header.html' %}
+
+<main class="container mt-4">
+    <table class="table table-bordered table-striped border-primary">
+        <thead class="table-primary">
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Lama Waktu Tes</th>
+                <th scope="col">Jumlah Tes</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for user in users %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ user.nama }}</td>
+                <td>{{ user.waktu }}</td>
+                <td>{{ user.jumlah }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+
+{% include 'layout/footer.html' %}
