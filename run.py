@@ -107,7 +107,7 @@ def gen(file_path, realtime=False, upload=False, nama=None, waktu=None):
         user = User(nama=nama, waktu=waktu, jumlah=situp_count//2)
         db.session.add(user)
         db.session.commit()
-        
+
 @app.route('/')
 def index():
     return render_template('index.html')
