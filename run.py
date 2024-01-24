@@ -7,6 +7,7 @@ from functions import *
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/sit_up'
 db = SQLAlchemy(app)
+camera = 0
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -15,7 +16,7 @@ class User(db.Model):
     jumlah = db.Column(db.Integer, nullable=False)
 
 def gen(file_path, realtime=False, upload=False, nama=None, waktu=None):
-    if file_path == '0':
+    if file_path == str(camera):
         file_path = int(file_path)
 
     cap = cv2.VideoCapture(file_path)
@@ -145,19 +146,20 @@ def upload_file():
 
 @app.route('/video_feed_upload')
 def video_feed_upload():
-    file_path = request.args.get('file_path', '0')
+    file_path = request.args.get('file_path', camera)
     nama = request.args.get('nama', 'Anonymous')
     return Response(gen(file_path, upload=True, nama=nama), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/video_feed')
 def video_feed():
-    return Response(gen(0), mimetype='multipart/x-mixed-replace; boundary=frame')
+    return Response(gen(camera), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/video_feed_realtime')
 def video_feed_realtime():
     nama = request.args.get('nama', 'Anonymous')
     waktu = request.args.get('waktu', 60)
-    return Response(gen(0, realtime=True, nama=nama, waktu=int(waktu)), mimetype='multipart/x-mixed-replace; boundary=frame')
+    print(nama, waktu)
+    return Response(gen(camera, realtime=True, nama=nama, waktu=int(waktu)), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
     with app.app_context():

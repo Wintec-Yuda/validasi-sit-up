@@ -31,7 +31,6 @@ $(document).ready(function () {
             'nama': $('#namaRealtime').val(),
             'waktu': $('#waktu').val(),
         };
-
         if (data) {
             $("#iframeVideo").removeClass("d-none").addClass("d-block");
             $("#iframeVideo").attr("href", `http://127.0.0.1:5000/video_feed_realtime?nama=${data.nama}&waktu=${data.waktu}`);
